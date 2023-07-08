@@ -5,6 +5,12 @@ import {Image} from "@mantine/core";
 import image from "./img_1.png"
 import {useEffect, useState} from "react";
 
+
+
+const text = "с днем рождения! Желаю счастья, поздравлений, большого куша!";
+const neededText = "капибара"
+
+
 function App() {
     const [value, setValue] = useState('');
     const [isInverted, setIsInverted] = useState(false);
@@ -37,6 +43,18 @@ function App() {
     }, []);
 
 
+    const [findedText, setFindedText] = useState("")
+    const handleClick = (character) => {
+        setFindedText(findedText + character)
+    };
+
+    const characterElements = Array.from(text, (character, index) => (
+        <span onClick={() => handleClick(character)}>
+            {character}
+        </span>
+    ));
+
+
   return (
       <div className="App">
           <img
@@ -45,6 +63,15 @@ function App() {
               className={`${value} ${isInverted ? 'inverted' : ''}`}
               style={{ backgroundColor: currentColor }}
           />
+          <h1>с днем рождения! Желаю счастья, поздравлений, большого куша!
+          </h1>
+
+
+
+          <div>{characterElements}</div>
+          {findedText.includes(neededText) ? <div>
+              Поражающее воображение место, где умело хранится волшебство в виде множества флаконов и ампул, пронизывает воздух аура загадочности. Здесь, в этом таинственном пространстве, скрыты драгоценные эликсиры, волшебные зелья и исцеляющие эссенции. Стеклянные сосуды в сияющих цветах, словно пленники волшебной пещеры, заточены в стойлах из полированного дерева. Здесь находятся редкие и могущественные ингредиенты, приведенные в гармонию со светом, создающим иллюзию плавающих в воздухе лучей. Это место, где каждая ампула является замкнутой сказкой, и каждый флакон таит в себе секреты природы и знание древних мудрецов. Оно дарит надежду и исцеление, наполняет душу умиротворением, будоражит воображение и раскрывает тайны, скрытые в пространстве между миром сновидений и реальностью.
+          </div> : <div></div>}
       </div>
 
   );
