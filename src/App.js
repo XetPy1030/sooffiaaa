@@ -63,8 +63,6 @@ function App() {
               className={`${value} ${isInverted ? 'inverted' : ''}`}
               style={{ backgroundColor: currentColor }}
           />
-          <h1>с днем рождения! Желаю счастья, поздравлений, большого куша!
-          </h1>
 
 
 
